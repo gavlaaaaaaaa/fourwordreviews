@@ -71,6 +71,14 @@
                                     <constraint firstItem="SaO-s7-a07" firstAttribute="trailing" secondItem="dJS-0h-oQZ" secondAttribute="trailing" id="naw-5g-L3c"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-aF-dOR">
+                                <rect key="frame" x="20" y="359" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Review"/>
+                                <connections>
+                                    <action selector="addReviewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T0S-Q3-y5Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -81,6 +89,15 @@
                         <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="beerNameLabel" destination="R6L-jZ-hff" id="ZnC-te-g51"/>
+                        <outlet property="fourWordReviewLabel" destination="bmP-Tp-VPN" id="jnr-OF-xqG"/>
+                        <outlet property="nameTextField" destination="eKR-F9-y13" id="wpi-6k-HBE"/>
+                        <outlet property="word1TextField" destination="dJS-0h-oQZ" id="lOv-gt-cis"/>
+                        <outlet property="word2TextField" destination="SaO-s7-a07" id="ErX-Sv-eEu"/>
+                        <outlet property="word3TextField" destination="Syu-CF-V6E" id="49h-8N-XLr"/>
+                        <outlet property="word4TextField" destination="8Vv-Gt-pXq" id="3OA-Hx-HDp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
