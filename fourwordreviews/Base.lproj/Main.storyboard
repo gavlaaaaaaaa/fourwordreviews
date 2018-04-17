@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="dnx-yO-u8N">
-                                <rect key="frame" x="20" y="40" width="335" height="299"/>
+                                <rect key="frame" x="20" y="40" width="335" height="579"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6L-jZ-hff">
                                         <rect key="frame" x="0.0" y="0.0" width="85" height="20.5"/>
@@ -63,6 +64,21 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
+                                    <imageView autoresizesSubviews="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="200" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="kr0-wW-oDK">
+                                        <rect key="frame" x="0.0" y="317" width="200" height="200"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kr0-wW-oDK" secondAttribute="height" multiplier="1:1" id="83a-6j-9Fk"/>
+                                            <constraint firstAttribute="height" constant="200" id="iPW-aG-qj8"/>
+                                            <constraint firstAttribute="width" constant="200" id="yfK-33-9T2"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Ze9-a4-wgq" appends="YES" id="S3G-lc-rAG"/>
+                                        </connections>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-cs-amk" customClass="RatingControl" customModule="fourwordreviews" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="535" width="252" height="44"/>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eKR-F9-y13" secondAttribute="trailing" id="PbH-m2-7hE"/>
@@ -72,7 +88,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-aF-dOR">
-                                <rect key="frame" x="20" y="359" width="80" height="30"/>
+                                <rect key="frame" x="20" y="622" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Review"/>
                                 <connections>
@@ -93,6 +109,7 @@
                         <outlet property="beerNameLabel" destination="R6L-jZ-hff" id="ZnC-te-g51"/>
                         <outlet property="fourWordReviewLabel" destination="bmP-Tp-VPN" id="jnr-OF-xqG"/>
                         <outlet property="nameTextField" destination="eKR-F9-y13" id="wpi-6k-HBE"/>
+                        <outlet property="photoImageView" destination="kr0-wW-oDK" id="qNF-Hm-y5w"/>
                         <outlet property="word1TextField" destination="dJS-0h-oQZ" id="lOv-gt-cis"/>
                         <outlet property="word2TextField" destination="SaO-s7-a07" id="ErX-Sv-eEu"/>
                         <outlet property="word3TextField" destination="Syu-CF-V6E" id="49h-8N-XLr"/>
@@ -100,8 +117,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ze9-a4-wgq">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="khP-KK-JPw"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="155" height="306"/>
+    </resources>
 </document>

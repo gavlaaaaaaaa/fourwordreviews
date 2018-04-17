@@ -46,5 +46,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Allows you to take photos to add to your reviews</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Allows you to choose photos to add to your reviews</string>
 </dict>
 </plist>
