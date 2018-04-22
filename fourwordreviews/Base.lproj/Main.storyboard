@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,85 +16,107 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="fourwordreviews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="dnx-yO-u8N">
-                                <rect key="frame" x="20" y="40" width="335" height="579"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dnx-yO-u8N">
+                                <rect key="frame" x="20" y="40" width="280" height="405.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6L-jZ-hff">
-                                        <rect key="frame" x="0.0" y="0.0" width="85" height="20.5"/>
+                                        <rect key="frame" x="97.5" y="0.0" width="85" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter beer name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eKR-F9-y13">
-                                        <rect key="frame" x="0.0" y="38.5" width="335" height="30"/>
+                                        <rect key="frame" x="0.0" y="30.5" width="280" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="owh-pZ-D2W"/>
+                                        </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Four Word Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmP-Tp-VPN">
-                                        <rect key="frame" x="0.0" y="86.5" width="139" height="20.5"/>
+                                        <rect key="frame" x="70.5" y="80.5" width="139" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter first review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJS-0h-oQZ">
-                                        <rect key="frame" x="0.0" y="125" width="188" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter second review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SaO-s7-a07">
-                                        <rect key="frame" x="0.0" y="173" width="188" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter third review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Syu-CF-V6E">
-                                        <rect key="frame" x="0.0" y="221" width="188" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter fourth review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Vv-Gt-pXq">
-                                        <rect key="frame" x="0.0" y="269" width="188" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                    </textField>
-                                    <imageView autoresizesSubviews="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="200" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="kr0-wW-oDK">
-                                        <rect key="frame" x="0.0" y="317" width="200" height="200"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="kr0-wW-oDK" secondAttribute="height" multiplier="1:1" id="83a-6j-9Fk"/>
-                                            <constraint firstAttribute="height" constant="200" id="iPW-aG-qj8"/>
-                                            <constraint firstAttribute="width" constant="200" id="yfK-33-9T2"/>
-                                        </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Ze9-a4-wgq" appends="YES" id="S3G-lc-rAG"/>
-                                        </connections>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-cs-amk" customClass="RatingControl" customModule="fourwordreviews" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="535" width="252" height="44"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-nH-bHF">
+                                        <rect key="frame" x="0.0" y="111" width="280" height="170"/>
+                                        <subviews>
+                                            <imageView autoresizesSubviews="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="200" placeholderIntrinsicHeight="200" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="kr0-wW-oDK" userLabel="No Photo Selected">
+                                                <rect key="frame" x="0.0" y="0.0" width="170" height="170"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="kr0-wW-oDK" secondAttribute="height" multiplier="1:1" id="83a-6j-9Fk"/>
+                                                    <constraint firstAttribute="height" constant="170" id="iPW-aG-qj8"/>
+                                                    <constraint firstAttribute="width" constant="170" id="yfK-33-9T2"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Ze9-a4-wgq" appends="YES" id="S3G-lc-rAG"/>
+                                                </connections>
+                                            </imageView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="r6j-fM-Yoi">
+                                                <rect key="frame" x="175" y="0.0" width="105" height="170"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter first review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dJS-0h-oQZ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="105" height="32"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter second review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SaO-s7-a07">
+                                                        <rect key="frame" x="0.0" y="48" width="105" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter third review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Syu-CF-V6E">
+                                                        <rect key="frame" x="0.0" y="94" width="105" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter fourth review word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Vv-Gt-pXq">
+                                                        <rect key="frame" x="0.0" y="140" width="105" height="30"/>
+                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ldo-zv-N49">
+                                        <rect key="frame" x="115.5" y="291" width="49" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-cs-amk" customClass="RatingControl" customModule="fourwordreviews" customModuleProvider="target">
+                                        <rect key="frame" x="14" y="321.5" width="252" height="44"/>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-aF-dOR">
+                                        <rect key="frame" x="90" y="375.5" width="100" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Aji-VB-s4V"/>
+                                            <constraint firstAttribute="height" constant="30" id="qtf-W5-04M"/>
+                                        </constraints>
+                                        <state key="normal" title="Add Review">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addReviewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T0S-Q3-y5Y"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="eKR-F9-y13" secondAttribute="trailing" id="PbH-m2-7hE"/>
-                                    <constraint firstItem="Syu-CF-V6E" firstAttribute="trailing" secondItem="dJS-0h-oQZ" secondAttribute="trailing" id="RK1-6O-p1D"/>
-                                    <constraint firstItem="8Vv-Gt-pXq" firstAttribute="trailing" secondItem="dJS-0h-oQZ" secondAttribute="trailing" id="mTb-Am-U2r"/>
-                                    <constraint firstItem="SaO-s7-a07" firstAttribute="trailing" secondItem="dJS-0h-oQZ" secondAttribute="trailing" id="naw-5g-L3c"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JBK-aF-dOR">
-                                <rect key="frame" x="20" y="622" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Review"/>
-                                <connections>
-                                    <action selector="addReviewButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T0S-Q3-y5Y"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -110,6 +132,7 @@
                         <outlet property="fourWordReviewLabel" destination="bmP-Tp-VPN" id="jnr-OF-xqG"/>
                         <outlet property="nameTextField" destination="eKR-F9-y13" id="wpi-6k-HBE"/>
                         <outlet property="photoImageView" destination="kr0-wW-oDK" id="qNF-Hm-y5w"/>
+                        <outlet property="ratingControl" destination="zaA-cs-amk" id="Dwg-Zr-EXO"/>
                         <outlet property="word1TextField" destination="dJS-0h-oQZ" id="lOv-gt-cis"/>
                         <outlet property="word2TextField" destination="SaO-s7-a07" id="ErX-Sv-eEu"/>
                         <outlet property="word3TextField" destination="Syu-CF-V6E" id="49h-8N-XLr"/>
@@ -127,6 +150,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defaultPhoto" width="155" height="306"/>
+        <image name="defaultPhoto" width="540" height="540"/>
     </resources>
 </document>

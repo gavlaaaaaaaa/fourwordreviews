@@ -18,6 +18,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var beerNameLabel: UILabel!
     @IBOutlet weak var fourWordReviewLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,8 +67,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func addReviewButton(_ sender: UIButton) {
+        let rating : String? = String(ratingControl.rating)
+        let postBody = ["product_name": nameTextField.text, "word1": word1TextField.text, "word2": word2TextField.text, "word3": word3TextField.text, "word4": word4TextField.text, "rating": rating]
         
-        let postBody = ["product_name": nameTextField.text, "word1": word1TextField.text, "word2": word2TextField.text, "word3": word3TextField.text, "word4": word4TextField.text]
         
         let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
         var request = URLRequest(url: reviewEndpoint)
