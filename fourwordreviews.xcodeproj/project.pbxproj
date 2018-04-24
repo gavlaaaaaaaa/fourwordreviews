@@ -14,6 +14,8 @@
 		FB1BFA432082698600E4A724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */; };
 		FB1BFA4E2082698600E4A724 /* fourwordreviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */; };
 		FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B7F9F20868A9000EB237A /* RatingControl.swift */; };
+		FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */; };
+		FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourwordreviewsTests.swift; sourceTree = "<group>"; };
 		FB1BFA4F2082698600E4A724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB8B7F9F20868A9000EB237A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
+		FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 				FB1BFA382082698400E4A724 /* AppDelegate.swift */,
 				FB1BFA3A2082698400E4A724 /* ViewController.swift */,
 				FB8B7F9F20868A9000EB237A /* RatingControl.swift */,
+				FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */,
+				FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */,
 				FB1BFA3C2082698400E4A724 /* Main.storyboard */,
 				FB1BFA3F2082698600E4A724 /* Assets.xcassets */,
 				FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */,
@@ -202,7 +208,9 @@
 			files = (
 				FB1BFA3B2082698400E4A724 /* ViewController.swift in Sources */,
 				FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */,
+				FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */,
 				FB1BFA392082698400E4A724 /* AppDelegate.swift in Sources */,
+				FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
