@@ -12,11 +12,14 @@ class BeerTableViewController: UITableViewController {
     
     //MARK: Properties
     
-    //var beers = [Beer]()
+    var beers = [BeerReview]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadBeers()
+        DispatchQueue.main.async{
+            self.loadBeers()
+         
+        }
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -32,24 +35,27 @@ class BeerTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return beers.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BeerTableViewCell", for: indexPath) as? BeerTableViewCell else {
+            fatalError("The dequeued cell is not an instance of BeerTableViewCell.")
+        }
+        let beer = beers[indexPath.row]
+        cell.nameLabel.text = beer.name
+        cell.ratingControl.rating = beer.rating!
+        cell.fourWordReviewLabel.text = "\(String(describing:  beer.word1!)), \(String(describing:  beer.word2!)), \(String(describing:  beer.word3!)), \(String(describing: beer.word4!))"
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -101,25 +107,21 @@ class BeerTableViewController: UITableViewController {
     private func loadBeers(){
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
         let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
-        let task = session.dataTask(with: reviewEndpoint, completionHandler: {(data: Data?, response: URLResponse?, error: Error?) -> Void in
+        let task = session.dataTask(with: reviewEndpoint) {(data: Data?, response: URLResponse?, error: Error?) in
             guard let data = data else {
                 //completion(nil)
                 return
             }
-            guard let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? NSDictionary else {
-                //completion(nil)
-                return
+            do{
+                let decoder = JSONDecoder()
+                self.beers = try decoder.decode(ReviewResponse.self, from:data).beers
+                
+                self.tableView.reloadData()
+
+            } catch let err {
+                print ("Error:", err)
             }
-            let dataArray = json!["response"] as! NSArray
-            //TODO: Create Beer object and parse items into Beer array
-            for item in dataArray {
-                let beer = item as! NSDictionary
-                let name : String = beer.value(forKey: "product_name") as! String
-                print(name)
-            }
-            //print(json)
-            //completion(result)
-        })
+        };
         task.resume()
     }
 

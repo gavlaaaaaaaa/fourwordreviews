@@ -13,6 +13,8 @@
 		FB1BFA402082698600E4A724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA3F2082698600E4A724 /* Assets.xcassets */; };
 		FB1BFA432082698600E4A724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */; };
 		FB1BFA4E2082698600E4A724 /* fourwordreviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */; };
+		FB574F9A2095FCAE0095BC1E /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F992095FCAE0095BC1E /* ReviewResponse.swift */; };
+		FB574F9C20960CC90095BC1E /* BeerReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F9B20960CC90095BC1E /* BeerReview.swift */; };
 		FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B7F9F20868A9000EB237A /* RatingControl.swift */; };
 		FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */; };
 		FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */; };
@@ -39,6 +41,8 @@
 		FB1BFA492082698600E4A724 /* fourwordreviewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fourwordreviewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourwordreviewsTests.swift; sourceTree = "<group>"; };
 		FB1BFA4F2082698600E4A724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB574F992095FCAE0095BC1E /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
+		FB574F9B20960CC90095BC1E /* BeerReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerReview.swift; sourceTree = "<group>"; };
 		FB8B7F9F20868A9000EB237A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 				FB1BFA3F2082698600E4A724 /* Assets.xcassets */,
 				FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */,
 				FB1BFA442082698600E4A724 /* Info.plist */,
+				FB574F992095FCAE0095BC1E /* ReviewResponse.swift */,
+				FB574F9B20960CC90095BC1E /* BeerReview.swift */,
 			);
 			path = fourwordreviews;
 			sourceTree = "<group>";
@@ -209,8 +215,10 @@
 				FB1BFA3B2082698400E4A724 /* ViewController.swift in Sources */,
 				FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */,
 				FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */,
+				FB574F9C20960CC90095BC1E /* BeerReview.swift in Sources */,
 				FB1BFA392082698400E4A724 /* AppDelegate.swift in Sources */,
 				FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */,
+				FB574F9A2095FCAE0095BC1E /* ReviewResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
