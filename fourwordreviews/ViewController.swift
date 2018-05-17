@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import os.log
+
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: Properties
@@ -19,6 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var fourWordReviewLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +48,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        
+    }
+    
+    
     //MARK: Actions
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         self.view.endEditing(true)
@@ -66,21 +81,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    @IBAction func addReviewButton(_ sender: UIButton) {
-        let rating : String? = String(ratingControl.rating)
-        let postBody = ["product_name": nameTextField.text, "word1": word1TextField.text, "word2": word2TextField.text, "word3": word3TextField.text, "word4": word4TextField.text, "rating": rating]
-        
-        
-        let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
-        var request = URLRequest(url: reviewEndpoint)
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task = URLSession.shared.dataTask(with: request)
-        task.resume()
-        
-    }
+   
     
 }
 

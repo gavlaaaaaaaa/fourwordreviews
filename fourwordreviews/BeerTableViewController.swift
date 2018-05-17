@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class BeerTableViewController: UITableViewController {
     
     //MARK: Properties
@@ -102,6 +103,39 @@ class BeerTableViewController: UITableViewController {
     }
     */
     
+    
+    //MARK: Actions
+    
+    @IBAction func addReviewButton(sender: UIStoryboardSegue) {
+        let sourceViewController = sender.source as? ViewController
+        if sourceViewController != nil {
+            
+            let rating : String? = String(sourceViewController!.ratingControl.rating)
+            let postBody = ["product_name": sourceViewController!.nameTextField.text, "word1": sourceViewController!.word1TextField.text, "word2": sourceViewController!.word2TextField.text, "word3": sourceViewController!.word3TextField.text, "word4": sourceViewController!.word4TextField.text, "rating": rating]
+            
+            
+            let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
+            var request = URLRequest(url: reviewEndpoint)
+            request.httpMethod = "POST"
+            request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+                if let data = data {
+                    let json = try? JSONSerialization.jsonObject(with: data)
+                    if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
+                        print(json)
+                        self.addBeer(json: json as? [String:Any])
+                    } else {
+                        
+                    }
+                }
+            })
+            task.resume()
+        }
+        
+        
+    }
     //MARK: Private Methods
     
     private func loadBeers(){
@@ -123,6 +157,13 @@ class BeerTableViewController: UITableViewController {
             }
         };
         task.resume()
+    }
+    
+    private func addBeer(json: [String:Any]?){
+        let data = json!["data"] as? [String:Any]
+        let insertId : Int = data!["insertId"] as! Int
+        
+        print(insertId)
     }
 
 }
