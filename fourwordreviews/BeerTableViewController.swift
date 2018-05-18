@@ -149,7 +149,9 @@ class BeerTableViewController: UITableViewController {
             do{
                 let decoder = JSONDecoder()
                 self.beers = try decoder.decode(ReviewResponse.self, from:data).beers
-                
+                self.beers.sort(by: { (a, b) -> Bool in
+                    a.rating! > b.rating!
+                })
                 self.tableView.reloadData()
 
             } catch let err {
@@ -163,7 +165,27 @@ class BeerTableViewController: UITableViewController {
         let data = json!["data"] as? [String:Any]
         let insertId : Int = data!["insertId"] as! Int
         
-        print(insertId)
+        let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
+        let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews/"+String(insertId))!
+        let task = session.dataTask(with: reviewEndpoint) {(data: Data?, response: URLResponse?, error: Error?) in
+            guard let data = data else {
+                //completion(nil)
+                return
+            }
+            do{
+                let decoder = JSONDecoder()
+                self.beers.append(try decoder.decode(ReviewResponse.self, from:data).beers[0])
+                self.beers.sort(by: { (a, b) -> Bool in
+                    a.rating! > b.rating!
+                })
+                
+                self.tableView.reloadData()
+                
+            } catch let err {
+                print ("Error:", err)
+            }
+        };
+        task.resume()
     }
 
 }

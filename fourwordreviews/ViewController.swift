@@ -10,7 +10,7 @@ import UIKit
 import os.log
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var word1TextField: UITextField!
@@ -25,13 +25,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        saveButton.isEnabled = false
+        // Handle the text field’s user input through delegate callbacks.
+        nameTextField.delegate = self
+        word1TextField.delegate = self
+        word2TextField.delegate = self
+        word3TextField.delegate = self
+        word4TextField.delegate = self
+        // Enable the Save button only if the text field has a valid Meal name.
+        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //MARK: UITextFieldDelegate
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        updateSaveButtonState()
+        if textField == nameTextField {
+            navigationItem.title = textField.text
+        }
+    }
+    
     
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -77,8 +96,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
         
+    }
+    
+    //MARK: Private Methods
+    private func updateSaveButtonState() {
+        // Disable the Save button if the text field is empty.
+        let text = nameTextField.text == ""
+        let fourwords = word1TextField.text == "" || (word1TextField.text?.split(separator: " ").count)! > 1 ||
+            word2TextField.text == "" || ( word2TextField.text?.split(separator: " ").count)! > 1 ||
+            word3TextField.text == "" || (word3TextField.text?.split(separator: " ").count)! > 1 ||
+            word4TextField.text == "" || (word4TextField.text?.split(separator: " ").count)! > 1
         
-        
+        saveButton.isEnabled = !text && !fourwords
     }
     
    
