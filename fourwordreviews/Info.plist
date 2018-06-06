@@ -50,5 +50,7 @@
 	<string>Allows you to take photos to add to your reviews</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to choose photos to add to your reviews</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to use your location for you to add a location to your review</string>
 </dict>
 </plist>

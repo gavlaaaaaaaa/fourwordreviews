@@ -8,6 +8,8 @@
 
 import UIKit
 import os.log
+import MapKit
+
 
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
@@ -22,6 +24,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var locationButton: UIButton!
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +39,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         word4TextField.delegate = self
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
 
     override func didReceiveMemoryWarning() {
@@ -98,6 +107,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    @IBAction func getLocation(_ sender: UIButton) {
+        print("Ouch! you pressed me")
+        
+    }
+    
+    
     //MARK: Private Methods
     private func updateSaveButtonState() {
         // Disable the Save button if the text field is empty.
@@ -110,7 +125,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         saveButton.isEnabled = !text && !fourwords
     }
     
-   
+}
+
+extension ViewController : CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
+        print("error:: \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        if status == .authorizedWhenInUse {
+            locationButton.isEnabled = true
+            locationManager.requestLocation()
+            
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        for (_,location) in locations.enumerated() {
+            print("location:: \(location)")
+        }
+        
+    }
     
 }
 

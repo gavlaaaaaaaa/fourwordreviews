@@ -14,6 +14,8 @@ class BeerTableViewController: UITableViewController {
     //MARK: Properties
     
     var beers = [BeerReview]()
+    let cellReuseIdentifier = "BeerTableViewCell"
+    let cellSpacingHeight: CGFloat = 5
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +38,22 @@ class BeerTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return beers.count
+    }
+    
+    // Set the spacing between sections
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return beers.count
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BeerTableViewCell", for: indexPath) as? BeerTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? BeerTableViewCell else {
             fatalError("The dequeued cell is not an instance of BeerTableViewCell.")
         }
         let beer = beers[indexPath.row]
