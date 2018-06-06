@@ -56,7 +56,7 @@ class BeerTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? BeerTableViewCell else {
             fatalError("The dequeued cell is not an instance of BeerTableViewCell.")
         }
-        let beer = beers[indexPath.row]
+        let beer = beers[indexPath.section]
         cell.nameLabel.text = beer.name
         cell.ratingControl.rating = beer.rating!
         cell.fourWordReviewLabel.text = "\(String(describing:  beer.word1!)), \(String(describing:  beer.word2!)), \(String(describing:  beer.word3!)), \(String(describing: beer.word4!))"
