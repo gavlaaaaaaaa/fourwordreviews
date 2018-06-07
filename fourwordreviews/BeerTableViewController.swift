@@ -15,7 +15,7 @@ class BeerTableViewController: UITableViewController {
     
     var beers = [BeerReview]()
     let cellReuseIdentifier = "BeerTableViewCell"
-    let cellSpacingHeight: CGFloat = 5
+    let cellSpacingHeight: CGFloat = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
