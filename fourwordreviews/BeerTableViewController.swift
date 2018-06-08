@@ -131,7 +131,6 @@ class BeerTableViewController: UITableViewController {
                 if let data = data {
                     let json = try? JSONSerialization.jsonObject(with: data)
                     if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
-                        print(json)
                         self.addBeer(json: json as? [String:Any])
                     } else {
                         

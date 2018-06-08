@@ -26,6 +26,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var locationButton: UIButton!
     let locationManager = CLLocationManager()
+    var userLocation : CLLocation? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,10 +80,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        // Configure the destination view controller only when the save button is pressed.
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
-            return
+        if(segue.identifier == "AddItem"){
+            // Configure the destination view controller only when the save button is pressed.
+            guard let button = sender as? UIBarButtonItem, button === saveButton else {
+                os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+                return
+            }
+        }
+        
+        if (segue.identifier == "locationSegue") {
+            //Checking identifier is crucial as there might be multiple
+            // segues attached to same view
+            let nav = segue.destination as! UINavigationController
+            let locationVC = nav.topViewController as! LocationSearchViewController;
+            locationVC.userLocation = self.userLocation
         }
         
     }
@@ -142,9 +153,14 @@ extension ViewController : CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        for (_,location) in locations.enumerated() {
+        /*for (_,location) in locations.enumerated() {
             print("location:: \(location)")
+        }*/
+        
+        if let location = locations.first {
+            userLocation = location
         }
+        print(userLocation)
         
     }
     
