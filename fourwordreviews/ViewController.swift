@@ -27,6 +27,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var locationButton: UIButton!
     let locationManager = CLLocationManager()
     var userLocation : CLLocation? = nil
+    var selectedLocation: MKMapItem? = nil
+    var selectedLocationAddress: String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,9 +120,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
-    @IBAction func getLocation(_ sender: UIButton) {
-        print("Ouch! you pressed me")
-        
+    @IBAction func unwindFromGetLocationVC(_ sender: UIStoryboardSegue){
+        if sender.source is LocationSearchViewController {
+            if let locationVC = sender.source as? LocationSearchViewController {
+                self.selectedLocation = locationVC.selectedLocation
+                self.selectedLocationAddress = locationVC.parseAddress(selectedItem: (selectedLocation?.placemark)!)
+            }
+        }
     }
     
     
@@ -160,7 +166,6 @@ extension ViewController : CLLocationManagerDelegate {
         if let location = locations.first {
             userLocation = location
         }
-        print(userLocation)
         
     }
     

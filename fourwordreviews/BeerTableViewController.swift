@@ -118,7 +118,13 @@ class BeerTableViewController: UITableViewController {
         if sourceViewController != nil {
             
             let rating : String? = String(sourceViewController!.ratingControl.rating)
-            let postBody = ["product_name": sourceViewController!.nameTextField.text, "word1": sourceViewController!.word1TextField.text, "word2": sourceViewController!.word2TextField.text, "word3": sourceViewController!.word3TextField.text, "word4": sourceViewController!.word4TextField.text, "rating": rating]
+            let latitude: Double? = sourceViewController!.selectedLocation?.placemark.coordinate.latitude
+            let longitude: Double? = sourceViewController!.selectedLocation?.placemark.coordinate.longitude
+            let location_name: String? = sourceViewController?.selectedLocation?.placemark.name
+            let location_address: String? = sourceViewController?.selectedLocationAddress
+            
+            let postBody = ["product_name": sourceViewController!.nameTextField.text!, "word1": sourceViewController!.word1TextField.text!, "word2": sourceViewController!.word2TextField.text!, "word3": sourceViewController!.word3TextField.text!, "word4": sourceViewController!.word4TextField.text!, "rating": rating!,
+                            "latitude": latitude!, "longitude":longitude!, "location_name": location_name!, "location_address": location_address! ] as [String : Any]
             
             
             let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!

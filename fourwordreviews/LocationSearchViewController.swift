@@ -17,6 +17,8 @@ class LocationSearchViewController: UIViewController, UITableViewDataSource, UIT
     var locations = [MKMapItem]()
     var mapView: MKMapView? = nil
     var userLocation : CLLocation!
+    var selectedLocation: MKMapItem? = nil
+    
     @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -74,7 +76,7 @@ class LocationSearchViewController: UIViewController, UITableViewDataSource, UIT
         // put a space between "4" and "Melrose Place"
         let firstSpace = (selectedItem.subThoroughfare != nil && selectedItem.thoroughfare != nil) ? " " : ""
         // put a comma between street and city/state
-        let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : ""
+        let comma = (selectedItem.subThoroughfare != nil || selectedItem.thoroughfare != nil) && (selectedItem.subAdministrativeArea != nil || selectedItem.administrativeArea != nil) ? ", " : " "
         // put a space between "Washington" and "DC"
         let secondSpace = (selectedItem.subAdministrativeArea != nil && selectedItem.administrativeArea != nil) ? " " : ""
         let addressLine = String(
@@ -87,15 +89,22 @@ class LocationSearchViewController: UIViewController, UITableViewDataSource, UIT
             comma,
             // city
             selectedItem.locality ?? "",
-            secondSpace,
+            comma,
             // state
             selectedItem.administrativeArea ?? ""
         )
-        return addressLine
+        return addressLine.trimmingCharacters(in: .whitespaces)
     }
  
     func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        let selectedCell = sender as! UITableViewCell
+        selectedLocation = locations[(tableView.indexPath(for: selectedCell)?.row)!]
     }
     
 

@@ -148,7 +148,6 @@
                                                     </attributedString>
                                                 </state>
                                                 <connections>
-                                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dmf-0U-Ntd"/>
                                                     <segue destination="AFB-ZV-LAN" kind="presentation" identifier="locationSegue" id="HM5-qj-C70"/>
                                                 </connections>
                                             </button>
@@ -349,6 +348,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="GDs-Nf-X9v" kind="unwind" unwindAction="unwindFromGetLocationVC:" id="F0C-9m-Rl7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -374,6 +376,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q29-rV-Z5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GDs-Nf-X9v" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="871.20000000000005" y="-630.13493253373315"/>
         </scene>
