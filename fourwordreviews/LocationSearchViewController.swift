@@ -100,7 +100,12 @@ class LocationSearchViewController: UIViewController, UITableViewDataSource, UIT
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
+    //MARK: Action
+    @IBAction func close(sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
+    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         let selectedCell = sender as! UITableViewCell

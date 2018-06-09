@@ -16,6 +16,8 @@ class BeerTableViewController: UITableViewController {
     var beers = [BeerReview]()
     let cellReuseIdentifier = "BeerTableViewCell"
     let cellSpacingHeight: CGFloat = 10
+    private let myRefreshControl = UIRefreshControl()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +25,20 @@ class BeerTableViewController: UITableViewController {
             self.loadBeers()
          
         }
+        myRefreshControl.addTarget(self, action: #selector(refreshBeers(_:)), for: .valueChanged)
+
+        myRefreshControl.tintColor = UIColor.blue
+        self.tableView.addSubview(myRefreshControl)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -149,6 +158,10 @@ class BeerTableViewController: UITableViewController {
         
     }
     //MARK: Private Methods
+    @objc private func refreshBeers(_ sender: Any){
+        loadBeers()
+    }
+    
     
     private func loadBeers(){
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
@@ -165,6 +178,7 @@ class BeerTableViewController: UITableViewController {
                     a.rating! > b.rating!
                 })
                 self.tableView.reloadData()
+                self.myRefreshControl.endRefreshing()
 
             } catch let err {
                 print ("Error:", err)

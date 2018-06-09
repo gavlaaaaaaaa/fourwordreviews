@@ -91,6 +91,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="view" destination="QEd-N3-wev" id="Qk6-3n-dAq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qjK-dZ-enN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -224,7 +227,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Beer" id="6sn-6e-n5e">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="s7U-RY-FFO"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="s7U-RY-FFO">
+                            <connections>
+                                <action selector="closeWithSender:" destination="BYZ-38-t0r" id="W1h-MF-qr6"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="IyC-DZ-rwe">
                             <connections>
                                 <segue destination="ECK-Wm-ONg" kind="unwind" unwindAction="addReviewButtonWithSender:" id="PRY-0Y-AOU"/>
@@ -309,7 +316,7 @@
             </objects>
             <point key="canvasLocation" x="3378.75" y="142.6056338028169"/>
         </scene>
-        <!--Location Search View Controller-->
+        <!--Location Search-->
         <scene sceneID="oLQ-lk-Aba">
             <objects>
                 <viewController id="Jan-Ib-94i" customClass="LocationSearchViewController" customModule="fourwordreviews" customModuleProvider="target" sceneMemberID="viewController">
@@ -367,8 +374,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aK7-Kz-tP7"/>
                     </view>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="BgX-aX-QjT">
-                        <nil key="title"/>
+                    <navigationItem key="navigationItem" title="Location Search" largeTitleDisplayMode="never" id="BgX-aX-QjT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="m9a-fV-Z1m">
+                            <connections>
+                                <action selector="closeWithSender:" destination="Jan-Ib-94i" id="mZq-md-W5y"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>

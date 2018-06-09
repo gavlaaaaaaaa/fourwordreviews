@@ -129,6 +129,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
+    @IBAction func close(sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     //MARK: Private Methods
     private func updateSaveButtonState() {
