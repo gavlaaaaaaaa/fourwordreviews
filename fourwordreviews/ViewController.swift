@@ -146,6 +146,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         saveButton.isEnabled = !text && !fourwords
     }
     
+    
+    
 }
 
 extension ViewController : CLLocationManagerDelegate {

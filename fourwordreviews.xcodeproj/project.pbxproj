@@ -15,6 +15,7 @@
 		FB1BFA4E2082698600E4A724 /* fourwordreviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */; };
 		FB574F9A2095FCAE0095BC1E /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F992095FCAE0095BC1E /* ReviewResponse.swift */; };
 		FB574F9C20960CC90095BC1E /* BeerReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F9B20960CC90095BC1E /* BeerReview.swift */; };
+		FB70F09E20D19CD5000ED9AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */; };
 		FB78AD3F20CAFFEB000CD939 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */; };
 		FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B7F9F20868A9000EB237A /* RatingControl.swift */; };
 		FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */; };
@@ -44,6 +45,7 @@
 		FB1BFA4F2082698600E4A724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB574F992095FCAE0095BC1E /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
 		FB574F9B20960CC90095BC1E /* BeerReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerReview.swift; sourceTree = "<group>"; };
+		FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		FB8B7F9F20868A9000EB237A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
@@ -90,17 +92,18 @@
 			isa = PBXGroup;
 			children = (
 				FB1BFA382082698400E4A724 /* AppDelegate.swift */,
+				FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */,
 				FB1BFA3A2082698400E4A724 /* ViewController.swift */,
-				FB8B7F9F20868A9000EB237A /* RatingControl.swift */,
-				FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */,
 				FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */,
 				FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */,
+				FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */,
+				FB8B7F9F20868A9000EB237A /* RatingControl.swift */,
+				FB574F992095FCAE0095BC1E /* ReviewResponse.swift */,
+				FB574F9B20960CC90095BC1E /* BeerReview.swift */,
 				FB1BFA3C2082698400E4A724 /* Main.storyboard */,
 				FB1BFA3F2082698600E4A724 /* Assets.xcassets */,
 				FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */,
 				FB1BFA442082698600E4A724 /* Info.plist */,
-				FB574F992095FCAE0095BC1E /* ReviewResponse.swift */,
-				FB574F9B20960CC90095BC1E /* BeerReview.swift */,
 			);
 			path = fourwordreviews;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB70F09E20D19CD5000ED9AE /* LoginViewController.swift in Sources */,
 				FB1BFA3B2082698400E4A724 /* ViewController.swift in Sources */,
 				FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */,
 				FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */,
