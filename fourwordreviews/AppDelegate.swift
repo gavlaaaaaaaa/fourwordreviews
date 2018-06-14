@@ -12,12 +12,20 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let defaultValues = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        let loginScreen = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RegisterHomepage")
-        self.window?.rootViewController = loginScreen
+        if defaultValues.integer(forKey: "user_id") == 0 {
+            //No user id stored so request user to login or register
+            let loginScreen = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RegisterHomepage")
+            self.window?.rootViewController = loginScreen
+        }
+        else{
+            // returning user will automatically get sent to logged in homepage - just need to declare their user id globally
+            UserSingleton.sharedInstance.user_id = defaultValues.integer(forKey: "user_id")
+            
+        }
         return true
     }
 
