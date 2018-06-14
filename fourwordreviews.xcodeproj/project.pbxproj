@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		FB1BFA392082698400E4A724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA382082698400E4A724 /* AppDelegate.swift */; };
-		FB1BFA3B2082698400E4A724 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA3A2082698400E4A724 /* ViewController.swift */; };
+		FB1BFA3B2082698400E4A724 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA3A2082698400E4A724 /* AddReviewViewController.swift */; };
 		FB1BFA3E2082698400E4A724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA3C2082698400E4A724 /* Main.storyboard */; };
 		FB1BFA402082698600E4A724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA3F2082698600E4A724 /* Assets.xcassets */; };
 		FB1BFA432082698600E4A724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */; };
 		FB1BFA4E2082698600E4A724 /* fourwordreviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */; };
 		FB574F9A2095FCAE0095BC1E /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F992095FCAE0095BC1E /* ReviewResponse.swift */; };
 		FB574F9C20960CC90095BC1E /* BeerReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F9B20960CC90095BC1E /* BeerReview.swift */; };
+		FB64584C20D2F0E7004B6619 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB64584B20D2F0E7004B6619 /* RegisterViewController.swift */; };
 		FB70F09E20D19CD5000ED9AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */; };
 		FB78AD3F20CAFFEB000CD939 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */; };
 		FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B7F9F20868A9000EB237A /* RatingControl.swift */; };
@@ -35,7 +36,7 @@
 /* Begin PBXFileReference section */
 		FB1BFA352082698400E4A724 /* fourwordreviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fourwordreviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1BFA382082698400E4A724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FB1BFA3A2082698400E4A724 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FB1BFA3A2082698400E4A724 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		FB1BFA3D2082698400E4A724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FB1BFA3F2082698600E4A724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB1BFA422082698600E4A724 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		FB1BFA4F2082698600E4A724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB574F992095FCAE0095BC1E /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
 		FB574F9B20960CC90095BC1E /* BeerReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerReview.swift; sourceTree = "<group>"; };
+		FB64584B20D2F0E7004B6619 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		FB8B7F9F20868A9000EB237A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -91,15 +93,13 @@
 		FB1BFA372082698400E4A724 /* fourwordreviews */ = {
 			isa = PBXGroup;
 			children = (
+				FB64585220D2F1AE004B6619 /* Form */,
+				FB64585120D2F191004B6619 /* Custom Object */,
+				FB64585020D2F177004B6619 /* API */,
+				FB64584F20D2F142004B6619 /* Entity */,
+				FB64584D20D2F102004B6619 /* Table View */,
+				FB64584A20D2F0C7004B6619 /* Auth */,
 				FB1BFA382082698400E4A724 /* AppDelegate.swift */,
-				FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */,
-				FB1BFA3A2082698400E4A724 /* ViewController.swift */,
-				FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */,
-				FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */,
-				FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */,
-				FB8B7F9F20868A9000EB237A /* RatingControl.swift */,
-				FB574F992095FCAE0095BC1E /* ReviewResponse.swift */,
-				FB574F9B20960CC90095BC1E /* BeerReview.swift */,
 				FB1BFA3C2082698400E4A724 /* Main.storyboard */,
 				FB1BFA3F2082698600E4A724 /* Assets.xcassets */,
 				FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */,
@@ -115,6 +115,57 @@
 				FB1BFA4F2082698600E4A724 /* Info.plist */,
 			);
 			path = fourwordreviewsTests;
+			sourceTree = "<group>";
+		};
+		FB64584A20D2F0C7004B6619 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */,
+				FB64584B20D2F0E7004B6619 /* RegisterViewController.swift */,
+			);
+			name = Auth;
+			sourceTree = "<group>";
+		};
+		FB64584D20D2F102004B6619 /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+				FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */,
+			);
+			name = "Table View";
+			sourceTree = "<group>";
+		};
+		FB64584F20D2F142004B6619 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FB574F9B20960CC90095BC1E /* BeerReview.swift */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		FB64585020D2F177004B6619 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				FB574F992095FCAE0095BC1E /* ReviewResponse.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		FB64585120D2F191004B6619 /* Custom Object */ = {
+			isa = PBXGroup;
+			children = (
+				FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */,
+				FB8B7F9F20868A9000EB237A /* RatingControl.swift */,
+			);
+			name = "Custom Object";
+			sourceTree = "<group>";
+		};
+		FB64585220D2F1AE004B6619 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				FB1BFA3A2082698400E4A724 /* AddReviewViewController.swift */,
+				FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */,
+			);
+			name = Form;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,7 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB70F09E20D19CD5000ED9AE /* LoginViewController.swift in Sources */,
-				FB1BFA3B2082698400E4A724 /* ViewController.swift in Sources */,
+				FB64584C20D2F0E7004B6619 /* RegisterViewController.swift in Sources */,
+				FB1BFA3B2082698400E4A724 /* AddReviewViewController.swift in Sources */,
 				FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */,
 				FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */,
 				FB574F9C20960CC90095BC1E /* BeerReview.swift in Sources */,

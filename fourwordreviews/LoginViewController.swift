@@ -32,6 +32,13 @@ class LoginViewController: UIViewController {
     
     
     //MARK: Actions
+    
+    
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     @IBAction func userLogin(_ sender: Any) {
         let email : String? = loginEmailAddress.text
         let password: String? = loginPassword.text
@@ -49,16 +56,18 @@ class LoginViewController: UIViewController {
             if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
                 DispatchQueue.main.async {
                     let alert = UIAlertController(title: "Success", message: "Login Successful!", preferredStyle: .alert)
-                    self.present(alert, animated: true)
+                    
+                    
+                    let appDelegateTemp = UIApplication.shared.delegate as? AppDelegate
+                    appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
+                    
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
                     
                     let when = DispatchTime.now() + 2
                     DispatchQueue.main.asyncAfter(deadline: when){
                         // your code with delay
                         alert.dismiss(animated: true, completion: nil)
                     }
-                    
-                    let appDelegateTemp = UIApplication.shared.delegate as? AppDelegate
-                    appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
                 }
             } else {
                 DispatchQueue.main.async {

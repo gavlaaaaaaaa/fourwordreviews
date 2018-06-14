@@ -123,7 +123,7 @@ class BeerTableViewController: UITableViewController {
     //MARK: Actions
     
     @IBAction func addReviewButton(sender: UIStoryboardSegue) {
-        let sourceViewController = sender.source as? ViewController
+        let sourceViewController = sender.source as? AddReviewViewController
         if sourceViewController != nil {
             
             let rating : String? = String(sourceViewController!.ratingControl.rating)

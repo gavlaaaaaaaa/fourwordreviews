@@ -12,7 +12,7 @@ import MapKit
 
 
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class AddReviewViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var word1TextField: UITextField!
@@ -150,7 +150,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
 }
 
-extension ViewController : CLLocationManagerDelegate {
+extension AddReviewViewController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
         print("error:: \(error.localizedDescription)")
