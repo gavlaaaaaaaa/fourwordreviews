@@ -123,17 +123,22 @@ class BeerTableViewController: UITableViewController {
     //MARK: Actions
     
     @IBAction func addReviewButton(sender: UIStoryboardSegue) {
-        let sourceViewController = sender.source as? AddReviewViewController
-        if sourceViewController != nil {
+        if let sourceViewController : AddReviewViewController = sender.source as? AddReviewViewController {
             
-            let rating : String? = String(sourceViewController!.ratingControl.rating)
-            let latitude: Double? = sourceViewController!.selectedLocation?.placemark.coordinate.latitude
-            let longitude: Double? = sourceViewController!.selectedLocation?.placemark.coordinate.longitude
-            let location_name: String? = sourceViewController?.selectedLocation?.placemark.name
-            let location_address: String? = sourceViewController?.selectedLocationAddress
+            let product_name : String = sourceViewController.nameTextField.text ?? ""
+            let word1 : String = sourceViewController.word1TextField.text ?? ""
+            let word2 : String = sourceViewController.word2TextField.text ?? ""
+            let word3 : String = sourceViewController.word3TextField.text ?? ""
+            let word4 : String = sourceViewController.word4TextField.text ?? ""
+            let rating : String = String(sourceViewController.ratingControl?.rating ?? 0)
+            let latitude = sourceViewController.selectedLocation?.placemark.coordinate.latitude ?? 0.0
+            let longitude = sourceViewController.selectedLocation?.placemark.coordinate.longitude ?? 0.0
+            let location_name = sourceViewController.selectedLocation?.placemark.name ?? ""
+            let location_address = sourceViewController.selectedLocationAddress ?? ""
             
-            let postBody = ["product_name": sourceViewController!.nameTextField.text!, "word1": sourceViewController!.word1TextField.text!, "word2": sourceViewController!.word2TextField.text!, "word3": sourceViewController!.word3TextField.text!, "word4": sourceViewController!.word4TextField.text!, "rating": rating!,
-                            "latitude": latitude!, "longitude":longitude!, "location_name": location_name!, "location_address": location_address! ] as [String : Any]
+            let postBody = ["product_name": product_name, "user_id": String(UserSingleton.sharedInstance.user_id), "word1": word1, "word2": word2, "word3": word3, "word4": word4, "rating": rating,
+                            "latitude": latitude, "longitude":longitude, "location_name": location_name, "location_address": location_address ] as [String : Any] 
+            
             
             
             let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
@@ -165,7 +170,7 @@ class BeerTableViewController: UITableViewController {
     
     private func loadBeers(){
         let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
-        let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
+        let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews/user/"+String(UserSingleton.sharedInstance.user_id))!
         let task = session.dataTask(with: reviewEndpoint) {(data: Data?, response: URLResponse?, error: Error?) in
             guard let data = data else {
                 //completion(nil)
