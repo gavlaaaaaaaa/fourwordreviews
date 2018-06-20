@@ -116,28 +116,47 @@
             </objects>
             <point key="canvasLocation" x="842" y="926"/>
         </scene>
-        <!--Table View Controller-->
+        <!--User Network Table View Controller-->
         <scene sceneID="k29-PX-84r">
             <objects>
-                <tableViewController id="Xvb-ef-8m8" sceneMemberID="viewController">
+                <tableViewController id="Xvb-ef-8m8" customClass="UserNetworkTableViewController" customModule="fourwordreviews" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kXa-ng-Mre">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1Yo-1O-x87">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" rowHeight="61" id="1Yo-1O-x87" customClass="UserNetworkTableViewCell" customModule="fourwordreviews" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Yo-1O-x87" id="aiQ-EP-Oe0">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nX5-zc-hC2">
+                                            <rect key="frame" x="16" y="5" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdI-vU-vHl">
+                                            <rect key="frame" x="74" y="20" width="146" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMS-Kx-oI2">
+                                            <rect key="frame" x="228" y="15" width="82" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Follow Back"/>
+                                        </button>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="followButton" destination="oMS-Kx-oI2" id="JDY-4N-Cf7"/>
+                                    <outlet property="profileImageView" destination="nX5-zc-hC2" id="1B4-wu-Lc2"/>
+                                    <outlet property="usernameLabel" destination="JdI-vU-vHl" id="ZAA-rs-QzF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Xvb-ef-8m8" id="Dhd-sE-70V"/>
-                            <outlet property="delegate" destination="Xvb-ef-8m8" id="2Jr-Xa-va6"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="aK1-b3-Xpm">
                         <nil key="title"/>
@@ -148,8 +167,14 @@
                                 <segment title="Following"/>
                                 <segment title="Followers"/>
                             </segments>
+                            <connections>
+                                <action selector="segmentControlValueChanged:" destination="Xvb-ef-8m8" eventType="valueChanged" id="1rE-yK-xch"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
+                    <connections>
+                        <outlet property="segmentControl" destination="8Dn-rr-Vjl" id="cg6-jQ-Wdf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="flb-gJ-Gmk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -275,7 +300,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="dnx-yO-u8N">
-                                <rect key="frame" x="20" y="84" width="280" height="406"/>
+                                <rect key="frame" x="20" y="84" width="280" height="398"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Beer Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R6L-jZ-hff">
                                         <rect key="frame" x="97.5" y="0.0" width="85" height="20.5"/>
@@ -376,7 +401,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zaA-cs-amk" customClass="RatingControl" customModule="fourwordreviews" customModuleProvider="target">
-                                        <rect key="frame" x="19" y="356" width="242" height="50"/>
+                                        <rect key="frame" x="19" y="356" width="242" height="42"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>

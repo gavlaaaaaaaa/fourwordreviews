@@ -20,6 +20,10 @@
 		FB70F09E20D19CD5000ED9AE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */; };
 		FB78AD3F20CAFFEB000CD939 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */; };
 		FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8B7F9F20868A9000EB237A /* RatingControl.swift */; };
+		FB8FEC0720DAEBA700D3BDEA /* UserNetworkTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0620DAEBA700D3BDEA /* UserNetworkTableViewController.swift */; };
+		FB8FEC0920DAEDB900D3BDEA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0820DAEDB900D3BDEA /* User.swift */; };
+		FB8FEC0B20DAF08000D3BDEA /* UserNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0A20DAF08000D3BDEA /* UserNetworkTableViewCell.swift */; };
+		FB8FEC0D20DAF76C00D3BDEA /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */; };
 		FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */; };
 		FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +56,10 @@
 		FB70F09D20D19CD5000ED9AE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		FB78AD3E20CAFFEB000CD939 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		FB8B7F9F20868A9000EB237A /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		FB8FEC0620DAEBA700D3BDEA /* UserNetworkTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkTableViewController.swift; sourceTree = "<group>"; };
+		FB8FEC0820DAEDB900D3BDEA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FB8FEC0A20DAF08000D3BDEA /* UserNetworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkTableViewCell.swift; sourceTree = "<group>"; };
+		FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */,
+				FB8FEC0620DAEBA700D3BDEA /* UserNetworkTableViewController.swift */,
 			);
 			name = "Table View";
 			sourceTree = "<group>";
@@ -141,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				FB574F9B20960CC90095BC1E /* BeerReview.swift */,
+				FB8FEC0820DAEDB900D3BDEA /* User.swift */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -149,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				FB574F992095FCAE0095BC1E /* ReviewResponse.swift */,
+				FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -158,6 +169,7 @@
 			children = (
 				FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */,
 				FB8B7F9F20868A9000EB237A /* RatingControl.swift */,
+				FB8FEC0A20DAF08000D3BDEA /* UserNetworkTableViewCell.swift */,
 			);
 			name = "Custom Object";
 			sourceTree = "<group>";
@@ -272,9 +284,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB8FEC0920DAEDB900D3BDEA /* User.swift in Sources */,
 				FB64585420D30E50004B6619 /* UserSingleton.swift in Sources */,
 				FB70F09E20D19CD5000ED9AE /* LoginViewController.swift in Sources */,
+				FB8FEC0B20DAF08000D3BDEA /* UserNetworkTableViewCell.swift in Sources */,
 				FB64584C20D2F0E7004B6619 /* RegisterViewController.swift in Sources */,
+				FB8FEC0D20DAF76C00D3BDEA /* UserResponse.swift in Sources */,
+				FB8FEC0720DAEBA700D3BDEA /* UserNetworkTableViewController.swift in Sources */,
 				FB1BFA3B2082698400E4A724 /* AddReviewViewController.swift in Sources */,
 				FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */,
 				FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */,
