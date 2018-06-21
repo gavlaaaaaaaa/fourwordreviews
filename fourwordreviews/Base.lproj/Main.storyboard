@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -120,7 +121,7 @@
         <scene sceneID="k29-PX-84r">
             <objects>
                 <tableViewController id="Xvb-ef-8m8" customClass="UserNetworkTableViewController" customModule="fourwordreviews" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kXa-ng-Mre">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kXa-ng-Mre">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,26 +130,44 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Yo-1O-x87" id="aiQ-EP-Oe0">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nX5-zc-hC2">
-                                            <rect key="frame" x="16" y="5" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nX5-zc-hC2">
+                                            <rect key="frame" x="10" y="5" width="50" height="51"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="M3b-FQ-2YT"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdI-vU-vHl">
-                                            <rect key="frame" x="74" y="20" width="146" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JdI-vU-vHl">
+                                            <rect key="frame" x="70" y="16" width="148" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMS-Kx-oI2">
-                                            <rect key="frame" x="228" y="15" width="82" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMS-Kx-oI2">
+                                            <rect key="frame" x="228" y="16" width="82" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="82" id="xxD-u2-vHd"/>
+                                            </constraints>
                                             <state key="normal" title="Follow Back"/>
+                                            <connections>
+                                                <action selector="followButtonPressed:" destination="Xvb-ef-8m8" eventType="touchUpInside" id="oud-1o-kdt"/>
+                                            </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oMS-Kx-oI2" firstAttribute="top" secondItem="aiQ-EP-Oe0" secondAttribute="topMargin" constant="5" id="7SX-LS-U33"/>
+                                        <constraint firstAttribute="trailing" secondItem="oMS-Kx-oI2" secondAttribute="trailingMargin" constant="18" id="GQL-od-KNr"/>
+                                        <constraint firstAttribute="bottom" secondItem="nX5-zc-hC2" secondAttribute="bottom" constant="5" id="SAv-zg-BBV"/>
+                                        <constraint firstItem="JdI-vU-vHl" firstAttribute="top" secondItem="oMS-Kx-oI2" secondAttribute="top" id="UhN-21-Z1V"/>
+                                        <constraint firstItem="nX5-zc-hC2" firstAttribute="leading" secondItem="aiQ-EP-Oe0" secondAttribute="leading" constant="10" id="YCV-14-1B4"/>
+                                        <constraint firstItem="oMS-Kx-oI2" firstAttribute="leading" secondItem="JdI-vU-vHl" secondAttribute="trailing" constant="10" id="efb-Lj-5y4"/>
+                                        <constraint firstItem="nX5-zc-hC2" firstAttribute="top" secondItem="aiQ-EP-Oe0" secondAttribute="top" constant="5" id="fC0-fl-kRf"/>
+                                        <constraint firstItem="oMS-Kx-oI2" firstAttribute="bottomMargin" secondItem="JdI-vU-vHl" secondAttribute="bottomMargin" id="lJF-qD-d0G"/>
+                                        <constraint firstItem="JdI-vU-vHl" firstAttribute="leading" secondItem="nX5-zc-hC2" secondAttribute="trailing" constant="10" id="nul-KU-pGF"/>
+                                        <constraint firstAttribute="bottom" secondItem="JdI-vU-vHl" secondAttribute="bottom" constant="16" id="tjN-Kk-9q0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="followButton" destination="oMS-Kx-oI2" id="JDY-4N-Cf7"/>
