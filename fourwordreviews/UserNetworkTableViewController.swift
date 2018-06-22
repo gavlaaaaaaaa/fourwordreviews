@@ -57,21 +57,24 @@ class UserNetworkTableViewController: UITableViewController  {
             fatalError("The dequeued cell is not an instance of UserNetworkTableViewCell.")
         }
         
+        
         switch(segmentControl.selectedSegmentIndex)
         {
         case 0:
-            cell.usernameLabel.text = following[indexPath.row].username
+            let followingUser : User = following[indexPath.row]
+            cell.usernameLabel.text = followingUser.username
             cell.followButton.isEnabled = true
             cell.followButton.setTitle("Unfollow", for: UIControlState.normal)
         case 1:
-            cell.usernameLabel.text = followers[indexPath.row].username
-            if following.contains(followers[indexPath.row]){
-                cell.followButton.setTitle("Follow Back", for: UIControlState.normal)
-                cell.followButton.isEnabled = true
-            }
-            else {
+            let followersUser : User = followers[indexPath.row]
+            cell.usernameLabel.text = followersUser.username
+            if following.contains(where: {$0.id == followersUser.id}){
                 cell.followButton.setTitle("Following", for: UIControlState.normal)
                 cell.followButton.isEnabled = false
+            }
+            else {
+                cell.followButton.setTitle("Follow Back", for: UIControlState.normal)
+                cell.followButton.isEnabled = true
             }
         default:
             break
@@ -92,17 +95,24 @@ class UserNetworkTableViewController: UITableViewController  {
         switch(segmentControl.selectedSegmentIndex)
         {
         case 0:
-            unfollowUser(userId: following[(self.tableView.indexPath(for: senderCell)?.row)!].id!) {(result) -> () in
+            unfollowUser(unfollowUserId: following[(self.tableView.indexPath(for: senderCell)?.row)!].id! ) {(result) -> () in
                 if result {
-                    //TODO FIX THIS SO IT RUNS ON MAIN THREAD
-                    //TODO UNFOLLOW API NOT WORKING
-                    senderCell.followButton.setTitle("Follow", for: UIControlState.normal)
-                    senderCell.followButton.isEnabled = true
+                    DispatchQueue.main.async {
+                        self.following.remove(at: (self.tableView.indexPath(for: senderCell)?.row)!)
+                        self.tableView.reloadData()
+                    }
                 }
             }
             break
         case 1:
-            //returnVal = followers.count
+            followUser(followUserId: followers[(self.tableView.indexPath(for: senderCell)?.row)!].id! ) {(result) -> () in
+                if result {
+                    DispatchQueue.main.async {
+                        self.following.append(self.followers[(self.tableView.indexPath(for: senderCell)?.row)!])
+                        self.tableView.reloadData()
+                    }
+                }
+            }
             break
         default:
             break
@@ -155,10 +165,37 @@ class UserNetworkTableViewController: UITableViewController  {
         
     }
     
-    func unfollowUser(userId: Int, completion: @escaping (_ result: Bool)->()){
-        let unfollowEndpoint = URL(string: "http://localhost:3000/api/v1/following/"+String(UserSingleton.sharedInstance.user_id)+"/unfollow/"+String(userId))!
+    func unfollowUser(unfollowUserId: Int, completion: @escaping (_ result: Bool)->()){
+        let unfollowEndpoint = URL(string: "http://localhost:3000/api/v1/following/")!
         var request = URLRequest(url: unfollowEndpoint)
+        
+        let postBody = ["user_id": UserSingleton.sharedInstance.user_id, "follows_user_id": unfollowUserId ] as [String : Any]
+        
+        
         request.httpMethod = "DELETE"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+            if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
+                completion(true)
+            } else {
+                completion(false)
+            }
+            
+        })
+        task.resume()
+    }
+    
+    func followUser(followUserId: Int, completion: @escaping (_ result: Bool)->()){
+        let followEndpoint = URL(string: "http://localhost:3000/api/v1/following/")!
+        var request = URLRequest(url: followEndpoint)
+        
+        let postBody = ["user_id": UserSingleton.sharedInstance.user_id, "follows_user_id": followUserId ] as [String : Any]
+        
+        
+        request.httpMethod = "POST"
+        request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
