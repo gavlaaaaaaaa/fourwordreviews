@@ -139,6 +139,9 @@ class BeerTableViewController: UITableViewController {
             let postBody = ["product_name": product_name, "user_id": String(UserSingleton.sharedInstance.user_id), "word1": word1, "word2": word2, "word3": word3, "word4": word4, "rating": rating,
                             "latitude": latitude, "longitude":longitude, "location_name": location_name, "location_address": location_address ] as [String : Any] 
             
+            if let image : UIImage = sourceViewController.photoImageView.image{
+                let imageBucket
+            }
             
             
             let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!

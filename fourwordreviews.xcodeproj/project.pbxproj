@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35405575B59FDF20142CA295 /* Pods_fourwordreviews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57CE7AA64300548D1D2CDB1A /* Pods_fourwordreviews.framework */; };
+		47CBF74FA8D77DF089AA63FA /* Pods_fourwordreviewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01A8372A4E3B72FC1BA9D5F0 /* Pods_fourwordreviewsTests.framework */; };
 		FB1BFA392082698400E4A724 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA382082698400E4A724 /* AppDelegate.swift */; };
 		FB1BFA3B2082698400E4A724 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA3A2082698400E4A724 /* AddReviewViewController.swift */; };
 		FB1BFA3E2082698400E4A724 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA3C2082698400E4A724 /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 		FB8FEC0D20DAF76C00D3BDEA /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */; };
 		FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */; };
 		FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */; };
+		FBE3C75B20DDAA14001AC876 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = FBE3C75A20DDAA14001AC876 /* awsconfiguration.json */; };
+		FBE3C75D20DDAC7D001AC876 /* AWSConfigSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE3C75C20DDAC7D001AC876 /* AWSConfigSingleton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		005480B614E92F11A60A8C75 /* Pods-fourwordreviews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fourwordreviews.release.xcconfig"; path = "Pods/Target Support Files/Pods-fourwordreviews/Pods-fourwordreviews.release.xcconfig"; sourceTree = "<group>"; };
+		01A8372A4E3B72FC1BA9D5F0 /* Pods_fourwordreviewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fourwordreviewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57CE7AA64300548D1D2CDB1A /* Pods_fourwordreviews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fourwordreviews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		731E0E129528EC0A544DC509 /* Pods-fourwordreviewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fourwordreviewsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fourwordreviewsTests/Pods-fourwordreviewsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EE6824B12A8BE9417AE863C3 /* Pods-fourwordreviews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fourwordreviews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fourwordreviews/Pods-fourwordreviews.debug.xcconfig"; sourceTree = "<group>"; };
+		F2F55488A13CDEAD6FA8F03E /* Pods-fourwordreviewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fourwordreviewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-fourwordreviewsTests/Pods-fourwordreviewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB1BFA352082698400E4A724 /* fourwordreviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fourwordreviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1BFA382082698400E4A724 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB1BFA3A2082698400E4A724 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +72,8 @@
 		FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewController.swift; sourceTree = "<group>"; };
+		FBE3C75A20DDAA14001AC876 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = ../../../Downloads/awsconfiguration.json; sourceTree = "<group>"; };
+		FBE3C75C20DDAC7D001AC876 /* AWSConfigSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfigSingleton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35405575B59FDF20142CA295 /* Pods_fourwordreviews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,18 +89,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47CBF74FA8D77DF089AA63FA /* Pods_fourwordreviewsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D686B9B2546C867017068E1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EE6824B12A8BE9417AE863C3 /* Pods-fourwordreviews.debug.xcconfig */,
+				005480B614E92F11A60A8C75 /* Pods-fourwordreviews.release.xcconfig */,
+				731E0E129528EC0A544DC509 /* Pods-fourwordreviewsTests.debug.xcconfig */,
+				F2F55488A13CDEAD6FA8F03E /* Pods-fourwordreviewsTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3F7AAF20FE2CEC175827D61A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				57CE7AA64300548D1D2CDB1A /* Pods_fourwordreviews.framework */,
+				01A8372A4E3B72FC1BA9D5F0 /* Pods_fourwordreviewsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FB1BFA2C2082698400E4A724 = {
 			isa = PBXGroup;
 			children = (
 				FB1BFA372082698400E4A724 /* fourwordreviews */,
 				FB1BFA4C2082698600E4A724 /* fourwordreviewsTests */,
 				FB1BFA362082698400E4A724 /* Products */,
+				0D686B9B2546C867017068E1 /* Pods */,
+				3F7AAF20FE2CEC175827D61A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,10 +147,12 @@
 				FB64584A20D2F0C7004B6619 /* Auth */,
 				FB1BFA382082698400E4A724 /* AppDelegate.swift */,
 				FB64585320D30E50004B6619 /* UserSingleton.swift */,
+				FBE3C75C20DDAC7D001AC876 /* AWSConfigSingleton.swift */,
 				FB1BFA3C2082698400E4A724 /* Main.storyboard */,
 				FB1BFA3F2082698600E4A724 /* Assets.xcassets */,
 				FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */,
 				FB1BFA442082698600E4A724 /* Info.plist */,
+				FBE3C75A20DDAA14001AC876 /* awsconfiguration.json */,
 			);
 			path = fourwordreviews;
 			sourceTree = "<group>";
@@ -190,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB1BFA522082698600E4A724 /* Build configuration list for PBXNativeTarget "fourwordreviews" */;
 			buildPhases = (
+				DF6AE7239DFE868167CC5F95 /* [CP] Check Pods Manifest.lock */,
 				FB1BFA312082698400E4A724 /* Sources */,
 				FB1BFA322082698400E4A724 /* Frameworks */,
 				FB1BFA332082698400E4A724 /* Resources */,
+				4EB6568DE9F79CA1756F386D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -207,6 +247,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FB1BFA552082698600E4A724 /* Build configuration list for PBXNativeTarget "fourwordreviewsTests" */;
 			buildPhases = (
+				CE146586BCE69962D0CDE8CC /* [CP] Check Pods Manifest.lock */,
 				FB1BFA452082698600E4A724 /* Sources */,
 				FB1BFA462082698600E4A724 /* Frameworks */,
 				FB1BFA472082698600E4A724 /* Resources */,
@@ -264,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBE3C75B20DDAA14001AC876 /* awsconfiguration.json in Resources */,
 				FB1BFA432082698600E4A724 /* LaunchScreen.storyboard in Resources */,
 				FB1BFA402082698600E4A724 /* Assets.xcassets in Resources */,
 				FB1BFA3E2082698400E4A724 /* Main.storyboard in Resources */,
@@ -279,6 +321,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4EB6568DE9F79CA1756F386D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-fourwordreviews/Pods-fourwordreviews-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AWSAuthCore/AWSAuthCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCognito/AWSCognito.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSMobileClient/AWSMobileClient.framework",
+				"${BUILT_PRODUCTS_DIR}/AWSS3/AWSS3.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSAuthCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCognito.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSMobileClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSS3.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-fourwordreviews/Pods-fourwordreviews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE146586BCE69962D0CDE8CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fourwordreviewsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF6AE7239DFE868167CC5F95 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fourwordreviews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FB1BFA312082698400E4A724 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -291,6 +398,7 @@
 				FB64584C20D2F0E7004B6619 /* RegisterViewController.swift in Sources */,
 				FB8FEC0D20DAF76C00D3BDEA /* UserResponse.swift in Sources */,
 				FB8FEC0720DAEBA700D3BDEA /* UserNetworkTableViewController.swift in Sources */,
+				FBE3C75D20DDAC7D001AC876 /* AWSConfigSingleton.swift in Sources */,
 				FB1BFA3B2082698400E4A724 /* AddReviewViewController.swift in Sources */,
 				FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */,
 				FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */,
@@ -456,6 +564,7 @@
 		};
 		FB1BFA532082698600E4A724 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE6824B12A8BE9417AE863C3 /* Pods-fourwordreviews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -473,6 +582,7 @@
 		};
 		FB1BFA542082698600E4A724 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 005480B614E92F11A60A8C75 /* Pods-fourwordreviews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -490,6 +600,7 @@
 		};
 		FB1BFA562082698600E4A724 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 731E0E129528EC0A544DC509 /* Pods-fourwordreviewsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -510,6 +621,7 @@
 		};
 		FB1BFA572082698600E4A724 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2F55488A13CDEAD6FA8F03E /* Pods-fourwordreviewsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
