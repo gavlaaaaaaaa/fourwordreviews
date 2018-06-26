@@ -28,7 +28,6 @@
 		FB8FEC0D20DAF76C00D3BDEA /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */; };
 		FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */; };
 		FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */; };
-		FBE3C75B20DDAA14001AC876 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = FBE3C75A20DDAA14001AC876 /* awsconfiguration.json */; };
 		FBE3C75D20DDAC7D001AC876 /* AWSConfigSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE3C75C20DDAC7D001AC876 /* AWSConfigSingleton.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +71,6 @@
 		FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
 		FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewController.swift; sourceTree = "<group>"; };
-		FBE3C75A20DDAA14001AC876 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = ../../../Downloads/awsconfiguration.json; sourceTree = "<group>"; };
 		FBE3C75C20DDAC7D001AC876 /* AWSConfigSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfigSingleton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,7 +150,6 @@
 				FB1BFA3F2082698600E4A724 /* Assets.xcassets */,
 				FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */,
 				FB1BFA442082698600E4A724 /* Info.plist */,
-				FBE3C75A20DDAA14001AC876 /* awsconfiguration.json */,
 			);
 			path = fourwordreviews;
 			sourceTree = "<group>";
@@ -305,7 +302,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBE3C75B20DDAA14001AC876 /* awsconfiguration.json in Resources */,
 				FB1BFA432082698600E4A724 /* LaunchScreen.storyboard in Resources */,
 				FB1BFA402082698600E4A724 /* Assets.xcassets in Resources */,
 				FB1BFA3E2082698400E4A724 /* Main.storyboard in Resources */,

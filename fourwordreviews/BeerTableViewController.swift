@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AWSS3
+import AWSCore
 
 
 class BeerTableViewController: UITableViewController {
@@ -17,6 +19,10 @@ class BeerTableViewController: UITableViewController {
     let cellReuseIdentifier = "BeerTableViewCell"
     let cellSpacingHeight: CGFloat = 10
     private let myRefreshControl = UIRefreshControl()
+    let transferManager = AWSS3TransferManager.default()
+
+    
+    
 
 
     override func viewDidLoad() {
@@ -69,6 +75,24 @@ class BeerTableViewController: UITableViewController {
         cell.nameLabel.text = beer.name
         cell.ratingControl.rating = beer.rating!
         cell.fourWordReviewLabel.text = "\(String(describing:  beer.word1!)), \(String(describing:  beer.word2!)), \(String(describing:  beer.word3!)), \(String(describing: beer.word4!))"
+        //TODO: NEED TO FIX TO CALL ASYNCHRONOUSLY AND SET IMAGE IN CORRECT CELL- use https://www.natashatherobot.com/ios-how-to-download-images-asynchronously-make-uitableview-scroll-fast/ 
+        if let url = URL(string: beer.image!) {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if error != nil {
+                    print("Failed fetching image:", error)
+                    return
+                }
+                
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    print("Not a proper HTTPURLResponse or statusCode")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    cell.photoImageView.image = UIImage(data: data!)
+                }
+            }.resume()
+        }
 
         return cell
     }
@@ -135,32 +159,87 @@ class BeerTableViewController: UITableViewController {
             let longitude = sourceViewController.selectedLocation?.placemark.coordinate.longitude ?? 0.0
             let location_name = sourceViewController.selectedLocation?.placemark.name ?? ""
             let location_address = sourceViewController.selectedLocationAddress ?? ""
-            
-            let postBody = ["product_name": product_name, "user_id": String(UserSingleton.sharedInstance.user_id), "word1": word1, "word2": word2, "word3": word3, "word4": word4, "rating": rating,
-                            "latitude": latitude, "longitude":longitude, "location_name": location_name, "location_address": location_address ] as [String : Any] 
+            var imageUrl = ""
+            //TODO: Refactor and move into seperate place
             
             if let image : UIImage = sourceViewController.photoImageView.image{
-                let imageBucket
+                
+                //store image to disk
+                let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+                let documentsDirectory : NSString = paths[0] as NSString
+                let imageFileUrl = URL(fileURLWithPath: documentsDirectory.appendingPathComponent("tempreviewfile"+String(UserSingleton.sharedInstance.user_id)) as String)
+
+                if let data = UIImageJPEGRepresentation(image, 0.75){
+                    do {
+                        try data.write(to: imageFileUrl)
+                        print("Successfully saved image at path: \(imageFileUrl)")
+                    } catch {
+                        print("Error saving image: \(error)")
+                    }
+                }
+                
+                let uploadRequest = AWSS3TransferManagerUploadRequest()!
+                
+                uploadRequest.bucket = AWSConfigSingleton.sharedInstance.imageS3Bucket
+                uploadRequest.key = AWSConfigSingleton.sharedInstance.reviewImageFolder+"/"+String(UserSingleton.sharedInstance.user_id)+"/"+String(Date().timeIntervalSince1970)+product_name+".jpeg"
+                uploadRequest.body = imageFileUrl
+                let savingAlert = UIAlertController(title: "Saving Review", message: "Saving...", preferredStyle: UIAlertControllerStyle.alert)
+                self.present(savingAlert, animated: true, completion: nil)
+                    
+                transferManager.upload(uploadRequest).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+                    savingAlert.dismiss(animated: true, completion: nil)
+                    if let error = task.error as NSError? {
+                        let failedAlert = UIAlertController(title: "Whoops", message: "Looks like our servers are drunk. Unable to save your review! Please try again.", preferredStyle: UIAlertControllerStyle.alert)
+                        self.present(failedAlert, animated: true, completion: nil)
+                        let when = DispatchTime.now() + 2
+                        DispatchQueue.main.asyncAfter(deadline: when){
+                            // your code with delay
+                            failedAlert.dismiss(animated: true, completion: nil)
+                        }
+                        
+                        if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                            switch code {
+                            case .cancelled, .paused:
+                                break
+                            default:
+                                print("Error uploading: \(uploadRequest.key ?? "") Error: \(error)")
+                            }
+                        } else {
+                            print("Error uploading: \(uploadRequest.key ?? "") Error: \(error)")
+                        }
+                        return nil
+                    }
+
+                    imageUrl = "https://s3.eu-west-2.amazonaws.com/"+AWSConfigSingleton.sharedInstance.imageS3Bucket+"/"+uploadRequest.key!.replacingOccurrences(of: " ", with: "+")
+                    //let uploadOutput = task.result
+                    print("Upload complete for: \(uploadRequest.key ?? "")")
+                    
+                    let postBody = ["product_name": product_name, "user_id": String(UserSingleton.sharedInstance.user_id), "word1": word1, "word2": word2, "word3": word3, "word4": word4, "rating": rating,
+                                    "latitude": latitude, "longitude":longitude, "location_name": location_name, "location_address": location_address, "image_url": imageUrl ] as [String : Any]
+                    
+                    
+                    let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
+                    var request = URLRequest(url: reviewEndpoint)
+                    request.httpMethod = "POST"
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
+                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                    
+                    let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
+                        if let data = data {
+                            let json = try? JSONSerialization.jsonObject(with: data)
+                            if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
+                                self.addBeer(json: json as? [String:Any])
+                            } else {
+                                
+                            }
+                        }
+                    })
+                    task.resume()
+                    return nil
+                })
             }
             
             
-            let reviewEndpoint = URL(string: "http://localhost:3000/api/v1/reviews")!
-            var request = URLRequest(url: reviewEndpoint)
-            request.httpMethod = "POST"
-            request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-                if let data = data {
-                    let json = try? JSONSerialization.jsonObject(with: data)
-                    if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
-                        self.addBeer(json: json as? [String:Any])
-                    } else {
-                        
-                    }
-                }
-            })
-            task.resume()
         }
         
         
@@ -185,8 +264,11 @@ class BeerTableViewController: UITableViewController {
                 self.beers.sort(by: { (a, b) -> Bool in
                     a.rating! > b.rating!
                 })
-                self.tableView.reloadData()
-                self.myRefreshControl.endRefreshing()
+                DispatchQueue.main.async {
+
+                    self.tableView.reloadData()
+                    self.myRefreshControl.endRefreshing()
+                }
 
             } catch let err {
                 print ("Error:", err)

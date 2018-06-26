@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSCore
 import AWSMobileClient
 
 @UIApplicationMain

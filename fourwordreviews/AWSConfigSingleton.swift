@@ -11,6 +11,8 @@ import Foundation
 class AWSConfigSingleton {
     
     static let sharedInstance: AWSConfigSingleton = { AWSConfigSingleton() }()
-    var reviewImageS3Bucket: String = "
+    var imageS3Bucket: String = "fourwordbeerreview-images"
+    var reviewImageFolder: String = "review_images"
+    
     
 }

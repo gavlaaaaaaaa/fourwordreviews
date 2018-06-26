@@ -52,5 +52,31 @@
 	<string>Allows you to choose photos to add to your reviews</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need to use your location for you to add a location to your review</string>
+	<key>AWS</key>
+	<dict>
+		<key>CredentialsProvider</key>
+		<dict>
+			<key>CognitoIdentity</key>
+			<dict>
+				<key>Default</key>
+				<dict>
+					<key>PoolId</key>
+					<string>eu-west-2:3bb8718d-89cc-46d7-a8d7-09d69f173964</string>
+					<key>Region</key>
+					<string>eu-west-2</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>S3TransferManager</key>
+		<dict>
+			<key>Default</key>
+			<dict>
+				<key>Region</key>
+				<string>eu-west-2</string>
+				<key>Bucket</key>
+				<string>fourwordbeerreview-userfiles-mobilehub-1702803121</string>
+			</dict>
+		</dict>
+	</dict>
 </dict>
 </plist>

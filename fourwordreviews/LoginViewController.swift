@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
                     DispatchQueue.main.async {
                         let alert = UIAlertController(title: "Success", message: "Login Successful!", preferredStyle: .alert)
                         
-                        
+                        UserSingleton.sharedInstance.user_id = self.defaultValues.integer(forKey: "user_id")
                         let appDelegateTemp = UIApplication.shared.delegate as? AppDelegate
                         appDelegateTemp?.window?.rootViewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController()
                         
