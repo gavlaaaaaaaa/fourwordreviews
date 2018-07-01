@@ -45,7 +45,7 @@ class ReviewResponse: Codable {
             word4 = try beerContainer.decode(String.self, forKey: .word4)
             rating = try beerContainer.decode(Int.self, forKey: .rating)
             do { image_url = try beerContainer.decode(String.self, forKey: .image_url)} catch{  image_url = ""}
-            let beer : BeerReview = BeerReview(name: product_name!, word1: word1!, word2: word2!, word3: word3!, word4: word4!, rating: rating!, image: image_url!)
+            let beer : BeerReview = BeerReview(name: product_name!, word1: word1!, word2: word2!, word3: word3!, word4: word4!, rating: rating!, imageUrl: image_url!,image: nil)
             beers.append(beer)
         }
        

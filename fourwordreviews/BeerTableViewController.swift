@@ -75,23 +75,29 @@ class BeerTableViewController: UITableViewController {
         cell.nameLabel.text = beer.name
         cell.ratingControl.rating = beer.rating!
         cell.fourWordReviewLabel.text = "\(String(describing:  beer.word1!)), \(String(describing:  beer.word2!)), \(String(describing:  beer.word3!)), \(String(describing: beer.word4!))"
-        //TODO: NEED TO FIX TO CALL ASYNCHRONOUSLY AND SET IMAGE IN CORRECT CELL- use https://www.natashatherobot.com/ios-how-to-download-images-asynchronously-make-uitableview-scroll-fast/ 
-        if let url = URL(string: beer.image!) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if error != nil {
-                    print("Failed fetching image:", error)
-                    return
+        
+        //cell.layoutIfNeeded()
+        if beer.image != nil {
+            cell.imageView?.image = beer.image
+            cell.imageView?.setNeedsLayout()
+        }
+        else{
+            if !(beer.imageUrl?.isEmpty)!{
+                if let url = URL(string: beer.imageUrl!)  {
+                    Utils.getImageFromUrl(imageUrl: url, completionHandler: { (success,image) in
+                        if success {
+                            beer.image = image
+                            DispatchQueue.main.async {
+                                cell.imageView?.image = image
+                                cell.imageView?.setNeedsLayout()
+                            }
+                        }
+                    })
                 }
-                
-                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                    print("Not a proper HTTPURLResponse or statusCode")
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    cell.photoImageView.image = UIImage(data: data!)
-                }
-            }.resume()
+            }
+            else {
+                beer.image = UIImage(named: "defaultPhoto")
+            }
         }
 
         return cell
@@ -303,5 +309,6 @@ class BeerTableViewController: UITableViewController {
         };
         task.resume()
     }
+    
 
 }

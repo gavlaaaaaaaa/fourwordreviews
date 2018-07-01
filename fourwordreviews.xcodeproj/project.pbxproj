@@ -26,6 +26,7 @@
 		FB8FEC0920DAEDB900D3BDEA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0820DAEDB900D3BDEA /* User.swift */; };
 		FB8FEC0B20DAF08000D3BDEA /* UserNetworkTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0A20DAF08000D3BDEA /* UserNetworkTableViewCell.swift */; };
 		FB8FEC0D20DAF76C00D3BDEA /* UserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */; };
+		FBA27F8920E8FC4C0068721F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA27F8820E8FC4C0068721F /* Utils.swift */; };
 		FBC43E7D208FBA1800EF6139 /* BeerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */; };
 		FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */; };
 		FBE3C75D20DDAC7D001AC876 /* AWSConfigSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE3C75C20DDAC7D001AC876 /* AWSConfigSingleton.swift */; };
@@ -69,6 +70,7 @@
 		FB8FEC0820DAEDB900D3BDEA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FB8FEC0A20DAF08000D3BDEA /* UserNetworkTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkTableViewCell.swift; sourceTree = "<group>"; };
 		FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResponse.swift; sourceTree = "<group>"; };
+		FBA27F8820E8FC4C0068721F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		FBC43E7C208FBA1800EF6139 /* BeerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewCell.swift; sourceTree = "<group>"; };
 		FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerTableViewController.swift; sourceTree = "<group>"; };
 		FBE3C75C20DDAC7D001AC876 /* AWSConfigSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AWSConfigSingleton.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 		FB64585020D2F177004B6619 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				FBA27F8820E8FC4C0068721F /* Utils.swift */,
 				FB574F992095FCAE0095BC1E /* ReviewResponse.swift */,
 				FB8FEC0C20DAF76C00D3BDEA /* UserResponse.swift */,
 			);
@@ -396,6 +399,7 @@
 				FB8FEC0720DAEBA700D3BDEA /* UserNetworkTableViewController.swift in Sources */,
 				FBE3C75D20DDAC7D001AC876 /* AWSConfigSingleton.swift in Sources */,
 				FB1BFA3B2082698400E4A724 /* AddReviewViewController.swift in Sources */,
+				FBA27F8920E8FC4C0068721F /* Utils.swift in Sources */,
 				FB8B7FA020868A9000EB237A /* RatingControl.swift in Sources */,
 				FBC43E7F208FBE6100EF6139 /* BeerTableViewController.swift in Sources */,
 				FB574F9C20960CC90095BC1E /* BeerReview.swift in Sources */,
