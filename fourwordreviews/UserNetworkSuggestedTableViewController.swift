@@ -8,20 +8,19 @@
 
 import UIKit
 
-class UserNetworkTableViewController: UITableViewController  {
+class UserNetworkSuggestedTableViewController: UITableViewController  {
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     let cellReuseIdentifier = "userCell"
     
-    var followers:[User] = []
-    var following:[User] = []
+    var suggested:[User] = []
+    var follows:[User] = []
     
     let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadFollowing(userId: UserSingleton.sharedInstance.user_id)
-        loadFollowers(userId: UserSingleton.sharedInstance.user_id)
+        loadSuggested(userId: UserSingleton.sharedInstance.user_id)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,21 +34,7 @@ class UserNetworkTableViewController: UITableViewController  {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var returnVal = 0
-        
-        switch(segmentControl.selectedSegmentIndex)
-        {
-        case 0:
-            returnVal = following.count
-            break
-        case 1:
-            returnVal = followers.count
-            break
-        default:
-            break
-        }
-        
-        return returnVal
+        return suggested.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,66 +42,38 @@ class UserNetworkTableViewController: UITableViewController  {
             fatalError("The dequeued cell is not an instance of UserNetworkTableViewCell.")
         }
         
-        
-        switch(segmentControl.selectedSegmentIndex)
-        {
-        case 0:
-            let followingUser : User = following[indexPath.row]
-            cell.usernameLabel.text = followingUser.username
-            cell.followButton.isEnabled = true
-            cell.followButton.setTitle("Unfollow", for: UIControlState.normal)
-        case 1:
-            let followersUser : User = followers[indexPath.row]
-            cell.usernameLabel.text = followersUser.username
-            if following.contains(where: {$0.id == followersUser.id}){
-                cell.followButton.setTitle("Following", for: UIControlState.normal)
-                cell.followButton.isEnabled = false
-            }
-            else {
-                cell.followButton.setTitle("Follow Back", for: UIControlState.normal)
-                cell.followButton.isEnabled = true
-            }
-        default:
-            break
-        }
+        let suggestedUser : User = suggested[indexPath.row]
+        cell.usernameLabel.text = suggestedUser.username
         
         return cell
         
     }
     
     
+    
+    override func willMove(toParentViewController viewController: UIViewController?) {
+        super.willMove(toParentViewController: viewController)
+        (viewController as? UserNetworkTableViewController)?.following.append(contentsOf: follows)
+        (viewController as? UserNetworkTableViewController)?.tableView.reloadData()
+    }
+
+    
+    
     //MARK - Actions
     
-    @IBAction func segmentControlValueChanged(_ sender: Any) {
-        self.tableView.reloadData()
-    }
     
     @IBAction func followButtonPressed(_ sender: AnyObject) {
         let senderCell = sender.superview??.superview as! UserNetworkTableViewCell
-        switch(segmentControl.selectedSegmentIndex)
-        {
-        case 0:
-            unfollowUser(unfollowUserId: following[(self.tableView.indexPath(for: senderCell)?.row)!].id! ) {(result) -> () in
-                if result {
-                    DispatchQueue.main.async {
-                        self.following.remove(at: (self.tableView.indexPath(for: senderCell)?.row)!)
-                        self.tableView.reloadData()
-                    }
+
+        followUser(followUserId: suggested[(self.tableView.indexPath(for: senderCell)?.row)!].id! ) {(result) -> () in
+            if result {
+                DispatchQueue.main.async {
+                    self.follows.append(self.suggested[(self.tableView.indexPath(for: senderCell)?.row)!])
+                    self.tableView.reloadData()
+                    senderCell.followButton.isEnabled = false
+                    senderCell.followButton.setTitle("Following", for: UIControlState.normal)
                 }
             }
-            break
-        case 1:
-            followUser(followUserId: followers[(self.tableView.indexPath(for: senderCell)?.row)!].id! ) {(result) -> () in
-                if result {
-                    DispatchQueue.main.async {
-                        self.following.append(self.followers[(self.tableView.indexPath(for: senderCell)?.row)!])
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-            break
-        default:
-            break
         }
         
     }
@@ -124,37 +81,17 @@ class UserNetworkTableViewController: UITableViewController  {
     
     //MARK - Helper functions
     
-    func loadFollowers(userId: Int){
-        let followersEndpoint = URL(string: "http://localhost:3000/api/v1/followers/"+String(userId))!
-        let task = session.dataTask(with: followersEndpoint) {(data: Data?, response: URLResponse?, error: Error?) in
-            guard let data = data else {
-                //completion(nil)
-                return
-            }
-            do{
-                let decoder = JSONDecoder()
-                self.followers = try decoder.decode(UserResponse.self, from:data).users
-                self.tableView.reloadData()
-                //self.myRefreshControl.endRefreshing()
-            } catch let err {
-                print ("Error:", err)
-            }
-
-        } ;
-        task.resume()
-        
-    }
     
-    func loadFollowing(userId: Int){
-        let followingEndpoint = URL(string: "http://localhost:3000/api/v1/following/"+String(userId))!
-        let task = session.dataTask(with: followingEndpoint) {(data: Data?, response: URLResponse?, error: Error?) in
+    func loadSuggested(userId: Int){
+        let suggestedFollowEndpoint = URL(string: "http://localhost:3000/api/v1/following/suggested/"+String(userId))!
+        let task = session.dataTask(with: suggestedFollowEndpoint) {(data: Data?, response: URLResponse?, error: Error?) in
             guard let data = data else {
                 //completion(nil)
                 return
             }
             do{
                 let decoder = JSONDecoder()
-                self.following = try decoder.decode(UserResponse.self, from:data).users
+                self.suggested = try decoder.decode(UserResponse.self, from:data).users
                 self.tableView.reloadData()
                 //self.myRefreshControl.endRefreshing()
             } catch let err {
@@ -213,3 +150,5 @@ class UserNetworkTableViewController: UITableViewController  {
     
     
 }
+
+

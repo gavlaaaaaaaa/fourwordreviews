@@ -12,7 +12,7 @@ import UIKit
     
     //MARK: Properties
     private var ratingButtons = [UIButton]()
-    @IBInspectable var starSize: CGSize = CGSize(width: 42.0, height: 42.0){
+    @IBInspectable var starSize: CGSize = CGSize(width: 30.0, height: 30.0){
         didSet{
             setupButtons()
         }

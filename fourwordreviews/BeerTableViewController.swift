@@ -53,16 +53,20 @@ class BeerTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return beers.count
+        return 1
     }
     
     // Set the spacing between sections
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return cellSpacingHeight
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90;
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return beers.count
     }
 
     
@@ -71,15 +75,15 @@ class BeerTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? BeerTableViewCell else {
             fatalError("The dequeued cell is not an instance of BeerTableViewCell.")
         }
-        let beer = beers[indexPath.section]
+        let beer = beers[indexPath.row]
         cell.nameLabel.text = beer.name
         cell.ratingControl.rating = beer.rating!
         cell.fourWordReviewLabel.text = "\(String(describing:  beer.word1!)), \(String(describing:  beer.word2!)), \(String(describing:  beer.word3!)), \(String(describing: beer.word4!))"
         
-        //cell.layoutIfNeeded()
         if beer.image != nil {
             cell.imageView?.image = beer.image
             cell.imageView?.setNeedsLayout()
+            cell.imageView?.layoutIfNeeded()
         }
         else{
             if !(beer.imageUrl?.isEmpty)!{
@@ -90,6 +94,7 @@ class BeerTableViewController: UITableViewController {
                             DispatchQueue.main.async {
                                 cell.imageView?.image = image
                                 cell.imageView?.setNeedsLayout()
+                                cell.imageView?.layoutIfNeeded()
                             }
                         }
                     })
