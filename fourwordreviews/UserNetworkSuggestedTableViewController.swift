@@ -14,7 +14,9 @@ class UserNetworkSuggestedTableViewController: UITableViewController  {
     let cellReuseIdentifier = "userCell"
     
     var suggested:[User] = []
-    var follows:[User] = []
+    
+    // will be passed from prepare for segue function
+    var userNetworkVC: UserNetworkTableViewController?
     
     let session = URLSession(configuration: .ephemeral, delegate: nil, delegateQueue: OperationQueue.main)
     
@@ -48,14 +50,7 @@ class UserNetworkSuggestedTableViewController: UITableViewController  {
         return cell
         
     }
-    
-    
-    
-    override func willMove(toParentViewController viewController: UIViewController?) {
-        super.willMove(toParentViewController: viewController)
-        (viewController as? UserNetworkTableViewController)?.following.append(contentsOf: follows)
-        (viewController as? UserNetworkTableViewController)?.tableView.reloadData()
-    }
+
 
     
     
@@ -64,12 +59,16 @@ class UserNetworkSuggestedTableViewController: UITableViewController  {
     
     @IBAction func followButtonPressed(_ sender: AnyObject) {
         let senderCell = sender.superview??.superview as! UserNetworkTableViewCell
-
-        followUser(followUserId: suggested[(self.tableView.indexPath(for: senderCell)?.row)!].id! ) {(result) -> () in
+        
+        let selectedUser: User = suggested[(self.tableView.indexPath(for: senderCell)?.row)!]
+        // call the followUser function created in the main network view controller
+        self.userNetworkVC?.followUser(followUserId: selectedUser.id! ) {(result) -> () in
             if result {
                 DispatchQueue.main.async {
-                    self.follows.append(self.suggested[(self.tableView.indexPath(for: senderCell)?.row)!])
                     self.tableView.reloadData()
+                    // add the new user to list of following and reload the table ready for when we go back
+                    self.userNetworkVC?.following.append(selectedUser)
+                    self.userNetworkVC?.tableView.reloadData()
                     senderCell.followButton.isEnabled = false
                     senderCell.followButton.setTitle("Following", for: UIControlState.normal)
                 }
@@ -80,7 +79,6 @@ class UserNetworkSuggestedTableViewController: UITableViewController  {
     
     
     //MARK - Helper functions
-    
     
     func loadSuggested(userId: Int){
         let suggestedFollowEndpoint = URL(string: "http://localhost:3000/api/v1/following/suggested/"+String(userId))!
@@ -101,50 +99,6 @@ class UserNetworkSuggestedTableViewController: UITableViewController  {
         } ;
         task.resume()
         
-    }
-    
-    func unfollowUser(unfollowUserId: Int, completion: @escaping (_ result: Bool)->()){
-        let unfollowEndpoint = URL(string: "http://localhost:3000/api/v1/following/")!
-        var request = URLRequest(url: unfollowEndpoint)
-        
-        let postBody = ["user_id": UserSingleton.sharedInstance.user_id, "follows_user_id": unfollowUserId ] as [String : Any]
-        
-        
-        request.httpMethod = "DELETE"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
-                completion(true)
-            } else {
-                completion(false)
-            }
-            
-        })
-        task.resume()
-    }
-    
-    func followUser(followUserId: Int, completion: @escaping (_ result: Bool)->()){
-        let followEndpoint = URL(string: "http://localhost:3000/api/v1/following/")!
-        var request = URLRequest(url: followEndpoint)
-        
-        let postBody = ["user_id": UserSingleton.sharedInstance.user_id, "follows_user_id": followUserId ] as [String : Any]
-        
-        
-        request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: postBody, options: [])
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let task = URLSession.shared.dataTask(with: request, completionHandler: {(data, response, error) -> Void in
-            if let response = response as? HTTPURLResponse , 200...299 ~= response.statusCode {
-                completion(true)
-            } else {
-                completion(false)
-            }
-            
-        })
-        task.resume()
     }
     
     

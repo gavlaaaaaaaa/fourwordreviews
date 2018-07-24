@@ -205,7 +205,7 @@
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="VOt-dN-AfM">
                             <connections>
-                                <segue destination="wNq-71-zVS" kind="show" id="o9d-6w-sTI"/>
+                                <segue destination="wNq-71-zVS" kind="show" identifier="SuggestedFollowsSegue" id="o9d-6w-sTI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

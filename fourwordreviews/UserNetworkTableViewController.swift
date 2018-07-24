@@ -84,6 +84,14 @@ class UserNetworkTableViewController: UITableViewController  {
         
     }
     
+    //MARK - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // used so the suggested view controller can add new followers to the list using the function defined in this class
+        if segue.identifier == "SuggestedFollowsSegue" {
+            (segue.destination as! UserNetworkSuggestedTableViewController).userNetworkVC = self
+        }
+    }
+    
     
     //MARK - Actions
     
@@ -210,6 +218,5 @@ class UserNetworkTableViewController: UITableViewController  {
         task.resume()
     }
     
-    
-    
 }
+
