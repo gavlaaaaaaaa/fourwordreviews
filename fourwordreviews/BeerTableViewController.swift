@@ -88,7 +88,7 @@ class BeerTableViewController: UITableViewController {
         else{
             if !(beer.imageUrl?.isEmpty)!{
                 if let url = URL(string: beer.imageUrl!)  {
-                    Utils.getImageFromUrl(imageUrl: url, completionHandler: { (success,image) in
+                    API.getImageFromUrl(imageUrl: url, completionHandler: { (success,image) in
                         if success {
                             beer.image = image
                             DispatchQueue.main.async {

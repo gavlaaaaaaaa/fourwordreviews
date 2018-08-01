@@ -12,12 +12,14 @@ class User: NSObject {
     
     let id: Int?
     let username : String?
+    let email: String?
     let image: String?
     
     
-    init(id: Int, username: String, image: String){
+    init(id: Int, username: String, email: String, image: String){
         self.id = id
         self.username = username
+        self.email = email
         self.image = image
     }
 }
