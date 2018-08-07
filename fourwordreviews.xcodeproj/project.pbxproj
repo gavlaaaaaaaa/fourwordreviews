@@ -15,6 +15,7 @@
 		FB1BFA402082698600E4A724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA3F2082698600E4A724 /* Assets.xcassets */; };
 		FB1BFA432082698600E4A724 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB1BFA412082698600E4A724 /* LaunchScreen.storyboard */; };
 		FB1BFA4E2082698600E4A724 /* fourwordreviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */; };
+		FB4570DE211A303A00C188B3 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4570DD211A303A00C188B3 /* HomepageViewController.swift */; };
 		FB574F9A2095FCAE0095BC1E /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F992095FCAE0095BC1E /* ReviewResponse.swift */; };
 		FB574F9C20960CC90095BC1E /* BeerReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB574F9B20960CC90095BC1E /* BeerReview.swift */; };
 		FB5B764120FE7F7000E13497 /* UserNetworkSuggestedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5B764020FE7F7000E13497 /* UserNetworkSuggestedTableViewController.swift */; };
@@ -61,6 +62,7 @@
 		FB1BFA492082698600E4A724 /* fourwordreviewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fourwordreviewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB1BFA4D2082698600E4A724 /* fourwordreviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fourwordreviewsTests.swift; sourceTree = "<group>"; };
 		FB1BFA4F2082698600E4A724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB4570DD211A303A00C188B3 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
 		FB574F992095FCAE0095BC1E /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
 		FB574F9B20960CC90095BC1E /* BeerReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerReview.swift; sourceTree = "<group>"; };
 		FB5B764020FE7F7000E13497 /* UserNetworkSuggestedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNetworkSuggestedTableViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				FBC43E7E208FBE6100EF6139 /* BeerTableViewController.swift */,
+				FB4570DD211A303A00C188B3 /* HomepageViewController.swift */,
 				FB8FEC0620DAEBA700D3BDEA /* UserNetworkTableViewController.swift */,
 				FB5B764020FE7F7000E13497 /* UserNetworkSuggestedTableViewController.swift */,
 			);
@@ -399,6 +402,7 @@
 				FB8FEC0920DAEDB900D3BDEA /* User.swift in Sources */,
 				FB64585420D30E50004B6619 /* UserSingleton.swift in Sources */,
 				FB70F09E20D19CD5000ED9AE /* LoginViewController.swift in Sources */,
+				FB4570DE211A303A00C188B3 /* HomepageViewController.swift in Sources */,
 				FB8FEC0B20DAF08000D3BDEA /* UserNetworkTableViewCell.swift in Sources */,
 				FB64584C20D2F0E7004B6619 /* RegisterViewController.swift in Sources */,
 				FB8FEC0D20DAF76C00D3BDEA /* UserResponse.swift in Sources */,
