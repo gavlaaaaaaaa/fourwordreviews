@@ -1,0 +1,6 @@
+framework module Pods_fourwordreviewsTests {
+  umbrella header "Pods-fourwordreviewsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

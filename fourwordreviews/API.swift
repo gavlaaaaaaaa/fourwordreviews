@@ -13,6 +13,7 @@ import AWSCore
 class API {
     
     let userEndpoint : String =  "http://localhost:3000/api/v1/users/"
+    let reviewsEndpoint : String = "http://localhost:3000/api/v1/reviews/"
     
     static func getImageFromUrl(imageUrl: URL, completionHandler: @escaping (_ success: Bool, _ image: UIImage?) -> Void) {
 
@@ -78,5 +79,27 @@ class API {
                 return
             }
         }.resume()
+    }
+    
+    func searchReviews(searchTerm: String, completionHandler: @escaping (_ success: Bool, _ reviews: [BeerReview]?) -> Void) {
+        URLSession.shared.dataTask(with: URL(string: self.reviewsEndpoint+"search?term="+searchTerm)!) {(data: Data?, response: URLResponse?, error: Error?) in
+            if error != nil {
+                print("Failed fetching search results:", error)
+                completionHandler(false, nil)
+                return
+            }
+            do{
+                let decoder = JSONDecoder()
+                let getReviews = try decoder.decode(ReviewResponse.self, from:data!).beers
+                completionHandler(true, getReviews)
+                return
+                
+            } catch let err {
+                print ("Error:", err)
+                completionHandler(false, nil)
+                return
+            }
+            }.resume()
+        
     }
 }

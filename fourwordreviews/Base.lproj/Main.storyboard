@@ -217,6 +217,70 @@
             </objects>
             <point key="canvasLocation" x="1809.375" y="926.4084507042254"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="hY8-nf-5mv">
+            <objects>
+                <tableViewController id="pGj-Nj-CJc" customClass="SearchViewController" customModule="fourwordreviews" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hx7-ug-CUY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="pGj-Nj-CJc" id="yMo-XQ-s5I"/>
+                            <outlet property="delegate" destination="pGj-Nj-CJc" id="Yh2-4e-1EE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="8eE-pD-1b8">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="65l-ee-aLy">
+                            <connections>
+                                <action selector="closeWithSender:" destination="pGj-Nj-CJc" id="lrs-JS-Iil"/>
+                            </connections>
+                        </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="1kd-C5-ygp">
+                            <rect key="frame" x="95.5" y="7" width="129" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Reviews"/>
+                                <segment title="People"/>
+                            </segments>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchController" destination="enm-Dx-oMS" id="gli-sr-aIN"/>
+                        <outlet property="searchDisplayController" destination="enm-Dx-oMS" id="S9o-9D-G00"/>
+                        <outlet property="segmentControl" destination="1kd-C5-ygp" id="OPB-ae-IwS"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TT7-Kc-vo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="enm-Dx-oMS">
+                    <connections>
+                        <outlet property="delegate" destination="pGj-Nj-CJc" id="tIg-wg-wnR"/>
+                        <outlet property="searchContentsController" destination="pGj-Nj-CJc" id="t1f-Eo-ItP"/>
+                        <outlet property="searchResultsDataSource" destination="pGj-Nj-CJc" id="6ah-ZA-cDV"/>
+                        <outlet property="searchResultsDelegate" destination="pGj-Nj-CJc" id="tCh-9F-XWC"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1743" y="1662"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HHb-3y-RL8">
+            <objects>
+                <navigationController id="3QG-eZ-efj" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="search" id="0Ld-jt-zmi"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="29S-Fx-c2x">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="pGj-Nj-CJc" kind="relationship" relationship="rootViewController" id="ajb-8c-na2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zoJ-1W-GeP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="730" y="1662"/>
+        </scene>
         <!--Suggested-->
         <scene sceneID="9F2-WF-dNK">
             <objects>
@@ -718,6 +782,7 @@
                         <segue destination="CCy-TY-YdW" kind="relationship" relationship="viewControllers" id="ppb-Pm-e5q"/>
                         <segue destination="Jsb-7Y-Sge" kind="relationship" relationship="viewControllers" id="ZhI-jJ-yln"/>
                         <segue destination="9HT-je-pMq" kind="relationship" relationship="viewControllers" id="fCs-eT-qQE"/>
+                        <segue destination="3QG-eZ-efj" kind="relationship" relationship="viewControllers" id="5XL-sQ-Knc"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iyN-h6-UsT" userLabel="First Responder" sceneMemberID="firstResponder"/>
